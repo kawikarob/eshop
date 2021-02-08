@@ -4,7 +4,7 @@ import { Container, Header, Icon, Input, Item, Text } from "native-base";
 
 import ProductList from "./ProductList";
 import SearchedProducts from "./SearchedProducts";
-import Banner from "../Shared/Banner";
+import Banner from "../../Shared/Banner";
 import CategoryFilter from "./CategoryFilter";
 
 var { height } = Dimensions.get("window");
@@ -12,7 +12,7 @@ var { height } = Dimensions.get("window");
 const data = require("../../assets/data/products.json");
 const productCategories = require("../../assets/data/categories.json");
 
-const ProductContainer = () => {
+const ProductContainer = (props) => {
   const [products, setProducts] = useState([]);
   const [productsFiltered, setProductsFiltered] = useState([]);
   const [focus, setFocus] = useState();
@@ -81,7 +81,10 @@ const ProductContainer = () => {
         </Item>
       </Header>
       {focus == true ? (
-        <SearchedProducts productsFiltered={productsFiltered} />
+        <SearchedProducts
+          navigation={props.navigation}
+          productsFiltered={productsFiltered}
+        />
       ) : (
         <ScrollView>
           <View>
@@ -100,7 +103,13 @@ const ProductContainer = () => {
             {productsCtg.length > 0 ? (
               <View style={styles.listContainer}>
                 {productsCtg.map((item) => {
-                  return <ProductList key={item._id.$oid} item={item} />;
+                  return (
+                    <ProductList
+                      navigation={props.navigation}
+                      key={item._id.$oid}
+                      item={item}
+                    />
+                  );
                 })}
               </View>
             ) : (
