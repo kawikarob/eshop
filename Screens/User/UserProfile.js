@@ -58,14 +58,14 @@ const UserProfile = (props) => {
     <Container style={styles.container}>
       <ScrollView contentContainerStyle={styles.subContainer}>
         <Text style={{ fontSize: 30 }}>
-          {userProfile ? userProfile.name : ""}
+          {userProfile ? userProfile.name : "why"}
         </Text>
         <View style={{ marginTop: 20 }}>
           <Text style={{ margin: 10 }}>
-            Email: {userProfile ? userProfile.email : ""}
+            Email: {userProfile ? userProfile.email : "not"}
           </Text>
           <Text style={{ margin: 10 }}>
-            Phone: {userProfile ? userProfile.phone : ""}
+            Phone: {userProfile ? userProfile.phone : "working"}
           </Text>
         </View>
         <View style={{ marginTop: 80 }}>
