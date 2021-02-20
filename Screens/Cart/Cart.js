@@ -23,6 +23,7 @@ import CartItem from "./CartItem";
 import { connect } from "react-redux";
 import * as actions from "../../Redux/Actions/cartActions";
 import { SwipeListView } from "react-native-swipe-list-view";
+import EasyButton from "../../Shared/StyledComponents/EasyButton";
 
 var { height, width } = Dimensions.get("window");
 
@@ -63,13 +64,18 @@ const Cart = (props) => {
               <Text style={styles.price}>$ {total}</Text>
             </Left>
             <Right>
-              <Button title="Clear" onPress={() => props.clearCart()} />
+              <EasyButton danger medium onPress={() => props.clearCart()}>
+                <Text style={{ color: "white" }}>Clear</Text>
+              </EasyButton>
             </Right>
             <Right>
-              <Button
-                title="Checkout"
+              <EasyButton
+                primary
+                medium
                 onPress={() => props.navigation.navigate("Checkout")}
-              />
+              >
+                <Text style={{ color: "white" }}>Checkout</Text>
+              </EasyButton>
             </Right>
           </View>
         </Container>
