@@ -17,6 +17,7 @@ var { width } = Dimensions.get("window");
 
 const ListItem = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
+  console.log(props.id);
 
   return (
     <View>
@@ -54,7 +55,11 @@ const ListItem = (props) => {
             >
               <Text style={styles.textStyle}>Edit</Text>
             </EasyButton>
-            <EasyButton medium danger>
+            <EasyButton
+              medium
+              danger
+              onPress={() => [props.delete(props._id), setModalVisible(false)]}
+            >
               <Text style={styles.textStyle}>Delete</Text>
             </EasyButton>
           </View>
