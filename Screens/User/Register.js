@@ -29,7 +29,6 @@ const Register = (props) => {
       phone: phone,
       isAdmin: false,
     };
-
     axios
       .post(`${baseURL}users/register`, user)
       .then((res) => {
@@ -38,7 +37,7 @@ const Register = (props) => {
             topOffset: 60,
             type: "success",
             text1: "Registration Succeeded",
-            text2: "Please login into your account",
+            text2: "Please Login into your account",
           });
           setTimeout(() => {
             props.navigation.navigate("Login");
@@ -66,21 +65,18 @@ const Register = (props) => {
           placeholder={"Email"}
           name={"email"}
           id={"email"}
-          value={email}
           onChangeText={(text) => setEmail(text.toLowerCase())}
         />
         <Input
           placeholder={"Name"}
           name={"name"}
           id={"name"}
-          value={name}
           onChangeText={(text) => setName(text)}
         />
         <Input
           placeholder={"Phone Number"}
           name={"phone"}
           id={"phone"}
-          value={phone}
           keyboardType={"numeric"}
           onChangeText={(text) => setPhone(text)}
         />
@@ -88,7 +84,6 @@ const Register = (props) => {
           placeholder={"Password"}
           name={"password"}
           id={"password"}
-          value={password}
           secureTextEntry={true}
           onChangeText={(text) => setPassword(text)}
         />

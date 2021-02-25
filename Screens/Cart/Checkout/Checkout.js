@@ -5,12 +5,15 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import FormContainer from "../../../Shared/Form/FormContainer";
 import Input from "../../../Shared/Form/Input";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import AuthGlobal from "../../../Context/store/AuthGlobal";
 
 import { connect } from "react-redux";
 
 const countries = require("../../../assets/data/counrties.json");
 
 const Checkout = (props) => {
+  const context = useContext(AuthGlobal);
+
   const [orderItems, setOrderItems] = useState();
   const [address, setAddress] = useState();
   const [address2, setAddress2] = useState();
@@ -22,6 +25,22 @@ const Checkout = (props) => {
 
   useEffect(() => {
     setOrderItems(props.cartItems);
+
+    if (context.stateUser.isAuthenticated) {
+      setUser(context.stateUser.user.sub);
+    } else {
+      props.navigation.navigate("Cart");
+      Toast.show({
+        topOffset: 60,
+        type: "error",
+        text1: "Please Login to Checkout",
+        text2: "",
+      });
+    }
+
+    return () => {
+      setOrderItems();
+    };
   }, []);
 
   const checkOut = () => {
@@ -33,6 +52,8 @@ const Checkout = (props) => {
       phone,
       shippingAddress1: address,
       shippingAddress2: address2,
+      status: "3",
+      user,
       zip,
     };
 

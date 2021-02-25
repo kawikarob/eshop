@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 import FormContainer from "../../Shared/Form/FormContainer";
 import Input from "../../Shared/Form/Input";
 import Error from "../../Shared/Error";
 import EasyButton from "../../Shared/StyledComponents/EasyButton";
 
-// Context //
+// Context
 import AuthGlobal from "../../Context/store/AuthGlobal";
 import { loginUser } from "../../Context/actions/Auth.actions";
 
@@ -26,6 +26,7 @@ const Login = (props) => {
       email,
       password,
     };
+
     if (email === "" || password === "") {
       setError("Please fill in your credentials");
     } else {
@@ -57,7 +58,7 @@ const Login = (props) => {
         </EasyButton>
       </View>
       <View style={[{ marginTop: 40 }, styles.buttonGroup]}>
-        <Text style={styles.middleText}>Dont have an account yet?</Text>
+        <Text style={styles.middleText}>Don't have an account yet?</Text>
         <EasyButton
           large
           secondary
